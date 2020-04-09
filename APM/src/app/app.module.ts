@@ -9,6 +9,8 @@ import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces';
 import { StarComponent } from './shared/star.component';
 
+//import { AngularReactDatesModule } from 'angular-react-dates';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +23,7 @@ import { StarComponent } from './shared/star.component';
   imports: [
     BrowserModule
     , FormsModule
+//    , AngularReactDatesModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
