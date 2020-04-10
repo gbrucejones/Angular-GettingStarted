@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   selector: 'app-angular-dates',
   template: '<angular-date-range-picker [(ngModel)]="selectedDateRange"></angular-date-range-picker>'
 })
-export class MyComponent {}
+export class AngularReactDateComponent {
+  public selectedDateRange: any = {};
+
+
+}
 // ABOVE name should match whatevername i want the component to be --- refe'd in app module
