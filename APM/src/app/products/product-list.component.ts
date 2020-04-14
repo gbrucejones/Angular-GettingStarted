@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage: boolean = false;
+  errorMessage: string;
   // private ProdutService:
   // constructor(productServie:ProductService ) {
   //   this._productService - ProductService;
@@ -23,9 +24,8 @@ export class ProductListComponent implements OnInit {
   }
   set listFilter(value:string) {
     this._listFilter = value;
-    this.filteredProducts=this._listFilter ? this.performFilter(this.listFilter) : this.products;
+    this.filteredProducts = this._listFilter ? this.performFilter(this.listFilter) : this.products;
   }
-
 
   filteredProducts: IProduct[];
   products: IProduct[] = [];
@@ -47,7 +47,15 @@ export class ProductListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    // subscribe to observables
+    // this is an async call
+    this.productService.getProducts().subscribe({
+      next: products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMessage = err
+    })
+
   }
 }
